@@ -34,8 +34,12 @@ console.log(`${member.user.tag} entró al servidor.`);
         datos.welcomeChannel
     );
 
-    if (!canal) return;
+if (!canal) {
+    console.log("❌ No encontré el canal de bienvenida.");
+    return;
+}
 
+   console.log("✅ Canal encontrado:", canal.name);
    
     const bienvenida = new EmbedBuilder()
         .setColor("#8A2BE2")
@@ -315,7 +319,11 @@ if (interaction.customId === "cerrar_ticket") {
         await interaction.channel.delete();
     }, 5000);
 
+
+     }
+
 }
+
 });
 
 client.login(process.env.TOKEN)
