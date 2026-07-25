@@ -203,13 +203,24 @@ if (message.content.startsWith("!setwelcome")) {
         }
 
     });
+
 client.on("interactionCreate", async interaction => {
-    
+
     if (interaction.isChatInputCommand()) {
 
         if (interaction.commandName === "hola") {
 
             return interaction.reply("¡Hola! Soy DRAGONS | BOT 🐉");
+
+        }
+
+        if (interaction.commandName === "bienvenida") {
+
+            const canal = interaction.options.getChannel("canal");
+
+            return interaction.reply({
+                content: `✅ Canal de bienvenida configurado: ${canal}`
+            });
 
         }
 

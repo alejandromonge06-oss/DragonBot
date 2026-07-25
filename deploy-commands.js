@@ -3,9 +3,18 @@ const { REST, Routes, SlashCommandBuilder } = require("discord.js");
 const commands = [
     new SlashCommandBuilder()
         .setName("hola")
-        .setDescription("Saluda al bot")
-        .toJSON()
-];
+        .setDescription("Saluda al bot"),
+
+    new SlashCommandBuilder()
+        .setName("bienvenida")
+        .setDescription("Configura el canal de bienvenida")
+        .addChannelOption(option =>
+            option
+                .setName("canal")
+                .setDescription("Canal donde se enviarán las bienvenidas")
+                .setRequired(true)
+        )
+].map(command => command.toJSON());
 
 const rest = new REST({ version: "10" }).setToken(process.env.TOKEN);
 
@@ -20,7 +29,7 @@ const rest = new REST({ version: "10" }).setToken(process.env.TOKEN);
             }
         );
 
-        console.log("✅ Comando registrado correctamente.");
+        console.log("✅ Comandos registrados.");
     } catch (error) {
         console.error(error);
     }
