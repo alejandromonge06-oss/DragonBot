@@ -214,17 +214,33 @@ client.on("interactionCreate", async interaction => {
 
         }
 
-        if (interaction.commandName === "bienvenida") {
+if (interaction.commandName === "bienvenida") {
 
-            const canal = interaction.options.getChannel("canal");
-
-            return interaction.reply({
-                content: `✅ Canal de bienvenida configurado: ${canal}`
-            });
-
-        }
-
+    if (!interaction.member.permissions.has(PermissionsBitField.Flags.Administrator)) {
+        return interaction.reply({
+            content: "❌ Solo los administradores pueden usar este comando.",
+            ephemeral: true
+        });
     }
+
+    const canal = interaction.options.getChannel("canal");
+
+    if (!config[interaction.guild.id]) {
+        config[interaction.guild.id] = {};
+    }
+
+    config[interaction.guild.id].welcomeChannel = canal.id;
+
+    fs.writeFileSync(
+        "./config.json",
+        JSON.stringify(config, null, 4)
+    );
+
+    return interaction.reply({
+        content: `✅ Canal de bienvenida configurado: ${canal}`
+    });
+
+}
 
     if (!interaction.isButton()) return;
 
