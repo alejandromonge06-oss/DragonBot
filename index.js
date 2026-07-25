@@ -25,7 +25,7 @@ client.once("clientReady", () => {
 
 
 client.on("guildMemberAdd", member => {
-
+console.log(`${member.user.tag} entró al servidor.`);
     const datos = config[member.guild.id];
 
     if (!datos) return;
