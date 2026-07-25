@@ -204,6 +204,16 @@ if (message.content.startsWith("!setwelcome")) {
 
     });
 client.on("interactionCreate", async interaction => {
+    
+    if (interaction.isChatInputCommand()) {
+
+        if (interaction.commandName === "hola") {
+
+            return interaction.reply("¡Hola! Soy DRAGONS | BOT 🐉");
+
+        }
+
+    }
 
     if (!interaction.isButton()) return;
 
