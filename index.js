@@ -56,7 +56,10 @@ if (!canal) {
         })
         .setTimestamp();
 
-    canal.send({ embeds: [bienvenida] });
+    canal.send({
+    content: `${member}`,
+    embeds: [bienvenida]
+});
 
 });
 
@@ -145,8 +148,8 @@ if (message.content.startsWith("!setwelcome")) {
 
 
     // COMANDO HOLA
-    if (message.content === "!hola") {
-        message.reply("¡Hola! Soy un bot de Discord 🤖");
+    if (message.content === "!phuto") {
+        message.reply("phuto de mielda");
     }
 
 
@@ -214,7 +217,7 @@ client.on("interactionCreate", async interaction => {
 
         if (interaction.commandName === "hola") {
 
-            return interaction.reply("¡Hola! Soy DRAGONS | BOT 🐉");
+            return interaction.reply("¡Hola! Soy DRAGONS | BOT XDD 🐉");
 
         }
 
