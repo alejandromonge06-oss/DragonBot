@@ -6,7 +6,10 @@ const {
     ButtonBuilder, 
     ButtonStyle,
     ChannelType,
-    PermissionsBitField
+    PermissionsBitField,
+    ModalBuilder,
+    TextInputBuilder,
+    TextInputStyle
 } = require("discord.js");
 const fs = require("fs");
 const config = require("./config.json");
@@ -149,7 +152,7 @@ if (message.content.startsWith("!setwelcome")) {
 
     // COMANDO HOLA
     if (message.content === "!xd") {
-        message.reply("uf_uf");
+        message.reply(":uf_uf:");
     }
 
 
@@ -249,6 +252,83 @@ if (interaction.commandName === "bienvenida") {
 
 }
 
+if (interaction.commandName === "embed") {
+
+    const modal = new ModalBuilder()
+        .setCustomId("modal_embed")
+        .setTitle("Crear Embed");
+
+    const titulo = new TextInputBuilder()
+        .setCustomId("titulo")
+        .setLabel("📝 Título")
+        .setStyle(TextInputStyle.Short)
+        .setRequired(true);
+
+    const texto = new TextInputBuilder()
+        .setCustomId("texto")
+        .setLabel("📄 Texto")
+        .setStyle(TextInputStyle.Paragraph)
+        .setRequired(true);
+
+    const color = new TextInputBuilder()
+        .setCustomId("color")
+        .setLabel("🎨 Color (#8A2BE2)")
+        .setStyle(TextInputStyle.Short)
+        .setRequired(false);
+
+    const imagen = new TextInputBuilder()
+        .setCustomId("imagen")
+        .setLabel("🖼️ URL de la imagen")
+        .setStyle(TextInputStyle.Short)
+        .setRequired(false);
+
+    modal.addComponents(
+        new ActionRowBuilder().addComponents(titulo),
+        new ActionRowBuilder().addComponents(texto),
+        new ActionRowBuilder().addComponents(color),
+        new ActionRowBuilder().addComponents(imagen)
+    );
+
+return interaction.showModal(modal);
+
+} // Cierra el if (interaction.commandName === "embed")
+
+} // ← AGREGA ESTA LLAVE NUEVA
+
+if (interaction.isModalSubmit()) {
+
+console.log("📨 Modal recibido");
+
+    if (interaction.customId === "modal_embed") {
+
+        console.log("✅ Entró al modal_embed");
+
+        const titulo = interaction.fields.getTextInputValue("titulo");
+        const texto = interaction.fields.getTextInputValue("texto");
+        const color = interaction.fields.getTextInputValue("color") || "#8A2BE2";
+        const imagen = interaction.fields.getTextInputValue("imagen");
+
+        const embed = new EmbedBuilder()
+            .setTitle(titulo)
+            .setDescription(texto)
+            .setColor(color);
+
+        if (imagen) {
+            embed.setImage(imagen);
+        }
+
+        await interaction.channel.send({
+            embeds: [embed]
+        });
+
+        return interaction.reply({
+            content: "✅ Embed enviado correctamente.",
+            ephemeral: true
+        });
+
+    }
+
+}
     if (!interaction.isButton()) return;
 
     if (interaction.customId === "crear_ticket") {
@@ -322,11 +402,8 @@ if (interaction.customId === "cerrar_ticket") {
         await interaction.channel.delete();
     }, 5000);
 
-
      }
-
-}
 
 });
 
-client.login(process.env.TOKEN)
+client.login(process.env.TOKEN);
