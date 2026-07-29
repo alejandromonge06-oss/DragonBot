@@ -148,8 +148,8 @@ if (message.content.startsWith("!setwelcome")) {
 
 
     // COMANDO HOLA
-    if (message.content === "!phuto") {
-        message.reply("phuto de mielda");
+    if (message.content === "!xd") {
+        message.reply("uf_uf");
     }
 
 
