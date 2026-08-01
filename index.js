@@ -12,7 +12,6 @@ const {
     TextInputStyle
 } = require("discord.js");
 const fs = require("fs");
-const express = require("express");
 const config = require("./config.json");
 const client = new Client({
     intents: [
@@ -408,31 +407,3 @@ if (interaction.customId === "cerrar_ticket") {
 });
 
 client.login(process.env.TOKEN);
-
-// ===============================
-// API para la página web
-// ===============================
-
-const express = require("express");
-const app = express();
-
-app.get("/", (req, res) => {
-    res.send("DragonBot API funcionando");
-});
-
-app.get("/members", (req, res) => {
-    const guild = client.guilds.cache.get("1476978589575413813");
-
-    if (!guild) {
-        return res.json({ members: 0 });
-    }
-
-    res.json({
-        members: guild.memberCount
-    });
-});
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log("API iniciada en el puerto " + PORT);
-});
