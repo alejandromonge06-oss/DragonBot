@@ -413,33 +413,26 @@ client.login(process.env.TOKEN);
 // API para la página web
 // ===============================
 
+const express = require("express");
 const app = express();
 
-app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    next();
+app.get("/", (req, res) => {
+    res.send("DragonBot API funcionando");
 });
 
-app.get("/discord", (req, res) => {
-
+app.get("/members", (req, res) => {
     const guild = client.guilds.cache.get("1476978589575413813");
 
     if (!guild) {
-        return res.json({
-            members: 0,
-            online: 0
-        });
+        return res.json({ members: 0 });
     }
 
     res.json({
-        members: guild.memberCount,
-        online: guild.presences.cache.size
+        members: guild.memberCount
     });
-
 });
 
 const PORT = process.env.PORT || 3000;
-
 app.listen(PORT, () => {
-    console.log(`API iniciada en el puerto ${PORT}`);
+    console.log("API iniciada en el puerto " + PORT);
 });
