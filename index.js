@@ -252,6 +252,57 @@ if (interaction.commandName === "bienvenida") {
 
 }
 
+if (interaction.commandName === "setticket") {
+
+    if (!interaction.member.permissions.has(PermissionsBitField.Flags.Administrator)) {
+        return interaction.reply({
+            content: "❌ Solo los administradores pueden usar este comando.",
+            ephemeral: true
+        });
+    }
+
+    const canal = interaction.options.getChannel("canal");
+    const categoria = interaction.options.getChannel("categoria");
+
+    if (!config[interaction.guild.id]) {
+        config[interaction.guild.id] = {};
+    }
+
+    config[interaction.guild.id].ticketChannel = canal.id;
+    config[interaction.guild.id].ticketCategory = categoria.id;
+
+    fs.writeFileSync(
+        "./config.json",
+        JSON.stringify(config, null, 4)
+    );
+
+    const embed = new EmbedBuilder()
+    .setColor("#8A2BE2")
+    .setTitle("🎫 Soporte DRAGONS")
+    .setDescription(
+        "¿Necesitas ayuda?\n\n" +
+        "Pulsa el botón de abajo para crear un ticket."
+    );
+
+const boton = new ActionRowBuilder()
+    .addComponents(
+        new ButtonBuilder()
+            .setCustomId("crear_ticket")
+            .setLabel("🎫 Crear Ticket")
+            .setStyle(ButtonStyle.Primary)
+    );
+
+await canal.send({
+    embeds: [embed],
+    components: [boton]
+});
+
+return interaction.reply({
+    content: `✅ Sistema de tickets configurado.\n📌 Canal: ${canal}\n📁 Categoría: ${categoria}`,
+    ephemeral: true
+});
+}
+
 if (interaction.commandName === "embed") {
 
     const modal = new ModalBuilder()
@@ -347,6 +398,7 @@ console.log("📨 Modal recibido");
         const ticket = await interaction.guild.channels.create({
             name: `ticket-${interaction.user.username}`,
             type: ChannelType.GuildText,
+            parent: config[interaction.guild.id].ticketCategory,
 
             permissionOverwrites: [
                 {

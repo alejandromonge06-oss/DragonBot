@@ -1,4 +1,9 @@
-const { REST, Routes, SlashCommandBuilder } = require("discord.js");
+const {
+    REST,
+    Routes,
+    SlashCommandBuilder,
+    ChannelType
+} = require("discord.js");
 
 const commands = [
     new SlashCommandBuilder()
@@ -18,6 +23,23 @@ const commands = [
     new SlashCommandBuilder()
         .setName("embed")
         .setDescription("Crear un embed personalizado"),
+
+        new SlashCommandBuilder()
+        .setName("setticket")
+        .setDescription("Configura el sistema de tickets")
+        .addChannelOption(option =>
+            option
+                .setName("canal")
+                .setDescription("Canal donde irá el panel")
+                .setRequired(true)
+        )
+        .addChannelOption(option =>
+            option
+                .setName("categoria")
+                .setDescription("Categoría donde se crearán los tickets")
+                .addChannelTypes(ChannelType.GuildCategory)
+                .setRequired(true)
+        ),
 
 ].map(command => command.toJSON());
 
