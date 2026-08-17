@@ -7,6 +7,7 @@ const recoverySystem = require("./recoverySystem");
 const securitySimulationSystem = require("./securitySimulationSystem");
 
 const PANEL_COLOR = "#8A2BE2";
+const TEST_MODE = true;
 
 function ensureAIControlConfig(gc) {
     if (!gc.aiControl) gc.aiControl = {};
@@ -542,6 +543,19 @@ async function handleButton(interaction, config, saveConfig) {
     const gc = ensureAIControlConfig(require("./panelSystem").getGuildConfig(config, guild.id));
     const id = interaction.customId;
 
+    if (TEST_MODE) {
+        console.log(`[AIS:BTN] TEST_MODE customId=${id} user=${interaction.user?.tag}`);
+        await interaction.deferUpdate().catch(e => console.error(`[AIS:ERROR] deferUpdate FAIL: ${e.message}`));
+        const testEmbed = new EmbedBuilder()
+            .setColor("#57F287")
+            .setTitle("✅ AI Security interaction received")
+            .setDescription(`\`\`\`customId: ${id}\nuser: ${interaction.user?.tag}\ntime: ${new Date().toISOString()}\`\`\``)
+            .setFooter({ text: "DRAGONS | AI Security TEST MODE" })
+            .setTimestamp();
+        await interaction.message.edit({ embeds: [testEmbed], components: [] }).catch(e => console.error(`[AIS:ERROR] edit FAIL: ${e.message}`));
+        return;
+    }
+
     if (id === "aicc_main") {
         await interaction.deferUpdate().catch(() => {});
         await interaction.message.edit(getMainView(gc)).catch(() => {});
@@ -766,6 +780,19 @@ async function handleSelect(interaction, config, saveConfig) {
     const id = interaction.customId;
     const value = interaction.values[0];
 
+    if (TEST_MODE) {
+        console.log(`[AIS:SELECT] TEST_MODE customId=${id} value=${value} user=${interaction.user?.tag}`);
+        await interaction.deferUpdate().catch(e => console.error(`[AIS:ERROR] deferUpdate FAIL: ${e.message}`));
+        const testEmbed = new EmbedBuilder()
+            .setColor("#57F287")
+            .setTitle("✅ AI Security select received")
+            .setDescription(`\`\`\`customId: ${id}\nvalue: ${value}\nuser: ${interaction.user?.tag}\ntime: ${new Date().toISOString()}\`\`\``)
+            .setFooter({ text: "DRAGONS | AI Security TEST MODE" })
+            .setTimestamp();
+        await interaction.message.edit({ embeds: [testEmbed], components: [] }).catch(e => console.error(`[AIS:ERROR] edit FAIL: ${e.message}`));
+        return;
+    }
+
     if (id === "aicc_incidents_filter_type") {
         await interaction.deferUpdate().catch(() => {});
         const ft = value === "all" ? null : value;
@@ -786,6 +813,19 @@ async function handleModal(interaction, config, saveConfig) {
     const guild = interaction.guild;
     const gc = ensureAIControlConfig(require("./panelSystem").getGuildConfig(config, guild.id));
     const id = interaction.customId;
+
+    if (TEST_MODE) {
+        console.log(`[AIS:MODAL] TEST_MODE customId=${id} user=${interaction.user?.tag}`);
+        await interaction.deferUpdate().catch(e => console.error(`[AIS:ERROR] deferUpdate FAIL: ${e.message}`));
+        const testEmbed = new EmbedBuilder()
+            .setColor("#57F287")
+            .setTitle("✅ AI Security modal received")
+            .setDescription(`\`\`\`customId: ${id}\nuser: ${interaction.user?.tag}\ntime: ${new Date().toISOString()}\`\`\``)
+            .setFooter({ text: "DRAGONS | AI Security TEST MODE" })
+            .setTimestamp();
+        await interaction.message.edit({ embeds: [testEmbed], components: [] }).catch(e => console.error(`[AIS:ERROR] edit FAIL: ${e.message}`));
+        return;
+    }
     const v = (cid) => interaction.fields.getTextInputValue(cid)?.trim();
 
     if (id === "aicc_modal_thresholds") {
@@ -835,27 +875,39 @@ function handleAIControlInteraction(interaction, config, saveConfig) {
     const id = interaction.customId;
     if (!id?.startsWith("aicc_")) return false;
 
+    console.log(`[AIS:IN] customId=${id} type=${interaction.type} user=${interaction.user?.tag || "?"} ts=${new Date().toISOString()}`);
+
     if (interaction.isButton()) {
-        handleButton(interaction, config, saveConfig).catch(err => {
-            console.error(`[AI:OUT] Error en handleButton aicc: ${err.message}`);
+        console.log(`[AIS:ROUTE] matched=true handler=handleButton customId=${id}`);
+        handleButton(interaction, config, saveConfig).then(() => {
+            console.log(`[AIS:OUT] handleButton OK customId=${id}`);
+        }).catch(err => {
+            console.error(`[AIS:ERROR] handleButton FAIL customId=${id} err=${err.message} stack=${err.stack || ""}`);
         });
         return true;
     }
 
     if (interaction.isStringSelectMenu()) {
-        handleSelect(interaction, config, saveConfig).catch(err => {
-            console.error(`[AI:OUT] Error en handleSelect aicc: ${err.message}`);
+        console.log(`[AIS:ROUTE] matched=true handler=handleSelect customId=${id} value=${interaction.values?.[0] || "?"}`);
+        handleSelect(interaction, config, saveConfig).then(() => {
+            console.log(`[AIS:OUT] handleSelect OK customId=${id}`);
+        }).catch(err => {
+            console.error(`[AIS:ERROR] handleSelect FAIL customId=${id} err=${err.message} stack=${err.stack || ""}`);
         });
         return true;
     }
 
     if (interaction.isModalSubmit()) {
-        handleModal(interaction, config, saveConfig).catch(err => {
-            console.error(`[AI:OUT] Error en handleModal aicc: ${err.message}`);
+        console.log(`[AIS:ROUTE] matched=true handler=handleModal customId=${id}`);
+        handleModal(interaction, config, saveConfig).then(() => {
+            console.log(`[AIS:OUT] handleModal OK customId=${id}`);
+        }).catch(err => {
+            console.error(`[AIS:ERROR] handleModal FAIL customId=${id} err=${err.message} stack=${err.stack || ""}`);
         });
         return true;
     }
 
+    console.log(`[AIS:UNHANDLED] customId=${id} type=${interaction.type}`);
     return false;
 }
 
