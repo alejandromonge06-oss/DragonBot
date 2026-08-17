@@ -1,1 +1,9 @@
 node_modules/
+.env
+bin/
+*.log
+*.lock
+*.bin
+transcripts/
+.vscode/
+17869095*.js

@@ -1,10 +1,564 @@
 {
     "1516175707909259415": {
         "welcomeChannel": "1529540016269820065",
-        "ticketChannel": "1529559746472841236"
+        "ticketChannel": "1529559746472841236",
+        "ai": {
+            "enabled": false,
+            "channel": null,
+            "permissionMode": "all",
+            "allowedRoles": [],
+            "cooldownMs": 3000,
+            "maxMessagesPerHour": 20,
+            "maxContextMessages": 20,
+            "model": "gpt-4o-mini",
+            "systemPrompt": "",
+            "knowledge": {
+                "serverName": "DRAGONS",
+                "description": "",
+                "rules": "",
+                "commands": "",
+                "tickets": "",
+                "minecraft": "",
+                "faq": ""
+            }
+        },
+        "recruitment": {
+            "enabled": false,
+            "publicChannel": null,
+            "reviewChannel": null,
+            "reviewerRoles": [],
+            "autoAssignRoles": {},
+            "cooldownMs": 300000,
+            "maxPerUser": 3,
+            "maxActive": 1,
+            "deleteInterviewChannels": true,
+            "useAI": true,
+            "vacancies": [],
+            "applications": [],
+            "nextId": 1,
+            "interviewsEnabled": true
+        },
+        "tiktok": {
+            "enabled": false,
+            "intervalMinutes": 5,
+            "mentionType": "none",
+            "mentionRoleId": null,
+            "customMessage": "🎬 ¡Nuevo video de TikTok!",
+            "thumbnail": true,
+            "accounts": [],
+            "history": [],
+            "stats": {
+                "totalChecks": 0,
+                "totalNotifications": 0,
+                "errors": 0,
+                "lastCheck": null
+            }
+        },
+        "panel": {
+            "roles": []
+        },
+        "security": {
+            "enabled": true,
+            "antiRaid": true,
+            "raidThreshold": 5,
+            "raidWindowMs": 10000,
+            "raidAction": "lockdown",
+            "raidLockdownMs": 600000,
+            "raidAlertChannel": null,
+            "antiBot": true,
+            "botAction": "alert",
+            "botAlertChannel": null,
+            "botWhitelist": [],
+            "antiSpam": true,
+            "spamLimit": 6,
+            "spamWindowMs": 5000,
+            "spamAction": "warn",
+            "spamTimeoutMs": 60000,
+            "spamMaxEmojis": 15,
+            "antiLinks": true,
+            "linkAction": "warn",
+            "linkBlockInvites": true,
+            "linkBlockedDomains": [],
+            "linkWhitelist": [],
+            "linkAllowedChannels": [],
+            "linkAllowedRoles": [],
+            "antiMassMention": true,
+            "massMentionLimit": 8,
+            "mentionAction": "delete",
+            "mentionBlockEveryone": true,
+            "spamMaxLength": 2000,
+            "roleProtection": true,
+            "roleAutoRevert": false,
+            "roleAlertChannel": null,
+            "alertChannel": "1538933037977440286",
+            "exemptRoles": [],
+            "lockdownBlockMessages": true,
+            "lockdownDenyVoice": false,
+            "quarantineRole": null,
+            "quarantineDurationMs": 86400000,
+            "quarantine": {},
+            "lockdown": {
+                "active": false,
+                "by": null,
+                "byName": null,
+                "at": null,
+                "reason": null,
+                "until": null,
+                "saved": {}
+            },
+            "alerts": [],
+            "stats": {
+                "raids": 0,
+                "blockedMessages": 0,
+                "blockedLinks": 0,
+                "blockedMentions": 0,
+                "botsDetected": 0,
+                "quarantined": 0,
+                "alerts": 0,
+                "autoSanctions": 0
+            },
+            "daily": {},
+            "incidents": [],
+            "incidentSeq": 0,
+            "suspiciousUsers": {},
+            "incidentRetentionDays": 30
+        },
+        "autoroles": {
+            "enabled": false,
+            "roles": []
+        },
+        "tts": {
+            "enabled": false,
+            "voiceChannel": null,
+            "textChannel": null
+        },
+        "music": {
+            "enabled": true,
+            "maxVolume": 100,
+            "autoLeaveMs": 60000,
+            "controlMode": "all",
+            "roles": [],
+            "textChannel": null,
+            "voiceChannel": null
+        },
+        "sugerencias": {
+            "enabled": false,
+            "channel": null,
+            "logChannel": null
+        },
+        "sorteos": {
+            "enabled": false,
+            "channel": null
+        },
+        "logs": {},
+        "tickets": {
+            "enabled": true
+        },
+        "encuestas": {
+            "settings": {
+                "enabled": false,
+                "channel": null,
+                "defaultDuration": "1h",
+                "pollType": "unica",
+                "liveResults": true,
+                "allowChange": true,
+                "maxParticipants": 0,
+                "autoDeletePrev": true
+            },
+            "active": null
+        }
     },
     "1476978589575413813": {
         "welcomeChannel": "1476979332659548321",
-        "ticketChannel": "1502100154675757106"
+        "ticketChannel": "1515768316269039738",
+        "ticketCategory": "1498488073120514068",
+        "staffRole": "1505249916472266823",
+        "transcriptChannel": "1538375808064954528",
+        "warnings": {
+            "1314484609404239933": [
+                {
+                    "reason": "wapo",
+                    "mod": "<@1328856058566934602> (1328856058566934602)",
+                    "date": 1786847692370
+                }
+            ],
+            "1328856058566934602": [
+                {
+                    "reason": "Publicar enlaces no permitidos",
+                    "mod": "<@1529523873781911662> (1529523873781911662)",
+                    "date": 1786858952254
+                }
+            ]
+        },
+        "logChannel": "1538375808064954528",
+        "logs": {
+            "categories": {
+                "miembros": "1538375808064954528",
+                "mensajes": "1538375808064954528",
+                "servidor": "1538375808064954528",
+                "moderacion": "1538375808064954528",
+                "canales": "1538375808064954528",
+                "tickets": "1538375808064954528"
+            },
+            "enabled": {
+                "mensajes": true,
+                "miembros": true,
+                "moderacion": true,
+                "canales": true,
+                "tickets": true,
+                "servidor": true
+            },
+            "main": "1538375808064954528"
+        },
+        "welcome": {
+            "enabled": true,
+            "channel": "1476979332659548321",
+            "image": "https://cdn.discordapp.com/attachments/1515881813183299645/1538402158482030602/content.png?ex=6a828c28&is=6a813aa8&hm=ac222cef223cf82bb139822dc373e6a10904cf19caa55fa5ef1489a4014a6d52&",
+            "message": "Hola {user}, ¡nos alegra tenerte aquí! 🔥\n\nLee las reglas y disfruta tu estadía en la comunidad 🐉",
+            "footer": "🐉 DRAGONS | Comunidad oficial"
+        },
+        "panel": {
+            "roles": [
+                "1505249916472266823"
+            ]
+        },
+        "security": {
+            "spamLimit": 10,
+            "spamWindowMs": 5000,
+            "raidThreshold": 5,
+            "raidWindowMs": 10000,
+            "massMentionLimit": 8,
+            "antiRaid": true,
+            "enabled": true,
+            "raidAction": "lockdown",
+            "raidLockdownMs": 600000,
+            "raidAlertChannel": "1514782607160643735",
+            "antiBot": true,
+            "botAction": "alert",
+            "botAlertChannel": "1514782607160643735",
+            "botWhitelist": [],
+            "antiSpam": true,
+            "spamAction": "warn",
+            "spamTimeoutMs": 60000,
+            "spamMaxEmojis": 15,
+            "antiLinks": true,
+            "linkAction": "warn",
+            "linkBlockInvites": true,
+            "linkBlockedDomains": [],
+            "linkWhitelist": [],
+            "linkAllowedChannels": [],
+            "linkAllowedRoles": [],
+            "antiMassMention": true,
+            "mentionAction": "delete",
+            "mentionBlockEveryone": true,
+            "spamMaxLength": 2000,
+            "roleProtection": true,
+            "roleAutoRevert": false,
+            "roleAlertChannel": "1514782607160643735",
+            "alertChannel": "1514782607160643735",
+            "exemptRoles": [],
+            "lockdownBlockMessages": true,
+            "lockdownDenyVoice": false,
+            "quarantineRole": "1538618516725563623",
+            "quarantineDurationMs": 86400000,
+            "quarantine": {},
+            "lockdown": {
+                "active": false,
+                "by": null,
+                "byName": null,
+                "at": null,
+                "reason": null,
+                "until": null,
+                "saved": {}
+            },
+            "alerts": [
+                {
+                    "id": "S4",
+                    "type": "lockdown_off",
+                    "user": null,
+                    "userName": null,
+                    "mod": "1328856058566934602",
+                    "modName": null,
+                    "channel": null,
+                    "channelName": null,
+                    "reason": "Lockdown desactivado desde el panel",
+                    "action": "lockdown_off",
+                    "detail": "56 canales restaurados",
+                    "at": 1786974999514
+                },
+                {
+                    "id": "S3",
+                    "type": "lockdown",
+                    "user": null,
+                    "userName": null,
+                    "mod": "1328856058566934602",
+                    "modName": null,
+                    "channel": null,
+                    "channelName": null,
+                    "reason": "Lockdown activado desde el panel",
+                    "action": "lockdown",
+                    "detail": "56 canales restringidos",
+                    "at": 1786974954770
+                },
+                {
+                    "id": "S2",
+                    "type": "lockdown_off",
+                    "user": null,
+                    "userName": null,
+                    "mod": "1328856058566934602",
+                    "modName": null,
+                    "channel": null,
+                    "channelName": null,
+                    "reason": "Lockdown desactivado desde el panel",
+                    "action": "lockdown_off",
+                    "detail": "56 canales restaurados",
+                    "at": 1786974877393
+                },
+                {
+                    "id": "S1",
+                    "type": "lockdown",
+                    "user": null,
+                    "userName": null,
+                    "mod": "1328856058566934602",
+                    "modName": null,
+                    "channel": null,
+                    "channelName": null,
+                    "reason": "Lockdown activado desde el panel",
+                    "action": "lockdown",
+                    "detail": "56 canales restringidos",
+                    "at": 1786974810490
+                },
+                {
+                    "id": "S1",
+                    "type": "roleChange",
+                    "user": null,
+                    "userName": null,
+                    "mod": "1328856058566934602",
+                    "modName": null,
+                    "channel": null,
+                    "channelName": null,
+                    "reason": "Rol creado: **nuevo rol**",
+                    "action": "log",
+                    "detail": "Rol creado: **nuevo rol**",
+                    "at": 1786905640764
+                }
+            ],
+            "stats": {
+                "raids": 0,
+                "blockedMessages": 0,
+                "blockedLinks": 0,
+                "blockedMentions": 0,
+                "botsDetected": 0,
+                "quarantined": 0,
+                "alerts": 5,
+                "autoSanctions": 0
+            },
+            "daily": {
+                "2026-08-16": {
+                    "alerts": 1
+                },
+                "2026-08-17": {
+                    "alerts": 4
+                }
+            },
+            "incidents": [],
+            "incidentSeq": 0,
+            "suspiciousUsers": {},
+            "incidentRetentionDays": 30
+        },
+        "autoroles": {
+            "enabled": false,
+            "roles": []
+        },
+        "tts": {
+            "enabled": false,
+            "voiceChannel": "1477737274731921652",
+            "textChannel": "1514781342754279514"
+        },
+        "sugerencias": {
+            "enabled": true,
+            "channel": "1514781342754279514",
+            "logChannel": "1514781342754279514"
+        },
+        "sorteos": {
+            "enabled": false,
+            "channel": null,
+            "active": {}
+        },
+        "tickets": {
+            "enabled": true,
+            "panelMessage": "## SISTEMA DE TICKETS 🎟️\n\n---\n\n👑 **DRAGONS BOT | PANEL DE SOPORTE** 👑\n\n¡Bienvenido al centro de asistencia de **DRAGONS BOT**! Por favor, selecciona la categoría que mejor se adapte a tu necesidad para abrir un ticket. Nuestro equipo te atenderá lo antes posible.\n\n\n📌 **Opciones Disponibles:**\n\n• 🛡️ **Reportar Jugador**\nSi encontraste a alguien rompiendo las reglas, usando hacks o teniendo un comportamiento tóxico, repórtalo aquí. Por favor, adjunta pruebas (capturas o videos).\n\n• ❓ **Dudas**\n¿Tienes preguntas sobre el servidor, mecánicas o cómo funciona algo? Abre un ticket aquí y resolveremos todas tus inquietudes.\n\n• 🐛 **Reportar Bugs**\n¿Encontraste algún error o fallo en el sistema? Ayúdanos a mejorar detallando el problema para que el equipo técnico pueda solucionarlo.\n\n• ⚖️ **Apelación**\n¿Fuiste sancionado o baneado y consideras que fue un error o quieres pedir una segunda oportunidad? Presenta tu caso de manera honesta en esta sección.\n\n• 🤝 **Hacer Alianza**\n¿Eres creador de contenido, representas a otra comunidad o quieres proponer un negocio con nosotros? Abre este ticket para hablar directamente con la administración.\n\n---\n\n> ⚠️ **Nota:** Por favor, sé paciente tras abrir tu ticket. Evita etiquetar al staff innecesariamente para que podamos atenderte más rápido. ¡Gracias por ayudarnos a mejorar la comunidad!"
+        },
+        "encuestas": {
+            "active": null,
+            "settings": {
+                "enabled": true,
+                "channel": "1514781342754279514",
+                "defaultDuration": "1h",
+                "pollType": "unica",
+                "liveResults": true,
+                "allowChange": true,
+                "maxParticipants": 0,
+                "autoDeletePrev": true
+            }
+        },
+        "music": {
+            "enabled": true,
+            "maxVolume": 100,
+            "autoLeaveMs": 120000,
+            "controlMode": "sameChannel",
+            "roles": [],
+            "textChannel": null,
+            "voiceChannel": null
+        },
+        "ai": {
+            "enabled": true,
+            "channel": "1538741347220197506",
+            "permissionMode": "all",
+            "allowedRoles": [],
+            "cooldownMs": 1000,
+            "maxMessagesPerHour": 10,
+            "maxContextMessages": 20,
+            "model": "gemini-3.5-flash",
+            "systemPrompt": "",
+            "knowledge": {
+                "serverName": "DRAGONS | IMPERIUM",
+                "description": "DRAGONS | IMPERIUM es una comunidad de Discord enfocada en Minecraft, entretenimiento y convivencia. Cuenta con sistemas de soporte, seguridad, moderación, música, sorteos, encuestas, TTS y diferentes herramientas para mejorar la experiencia de los miembros.",
+                "rules": "1. Respeta a todos los miembros.\n2. No se permite spam ni flood.\n3. No se permite contenido ofensivo, ilegal o inapropiado.\n4. No uses hacks, exploits o trampas en actividades relacionadas con el servidor.\n5. No molestes, acoses ni provoques intencionalmente a otros miembros.\n6. No compartas información personal o confidencial.\n7. Utiliza cada canal para su propósito correspondiente.\n8. Sigue las indicaciones del equipo de moderación.\n9. No intentes aprovechar errores o vulnerabilidades del servidor.\n10. El incumplimiento de las reglas puede resultar en una sanción.",
+                "commands": "DRAGONS BOT cuenta con diferentes sistemas y comandos para administrar y utilizar el servidor.\n\n🎫 Tickets: sistema de soporte con diferentes categorías.\n👋 Bienvenidas: mensajes automáticos para nuevos miembros.\n📋 Logs: registro de eventos importantes del servidor.\n🗳️ Encuestas: permite crear encuestas y recibir respuestas.\n🎁 Sorteos: sistema para realizar sorteos.\n🔊 TTS: sistema de texto a voz.\n🎵 Música: reproducción de música en canales de voz.\n🛡️ Seguridad y moderación: herramientas para proteger y administrar el servidor.\n🤖 DRAGONS AI: inteligencia artificial conversacional.\n\nLa IA debe explicar los comandos únicamente cuando tenga información confirmada sobre ellos y no debe inventar comandos que no existan.",
+                "tickets": "DRAGONS cuenta con un sistema de tickets para recibir y gestionar solicitudes de los miembros.\n\n🎫 Reportar Jugador\nPara reportar a un jugador por romper las reglas, usar hacks, comportamiento tóxico u otras infracciones. Se recomienda adjuntar pruebas.\n\n❓ Dudas\nPara resolver preguntas sobre el servidor, Minecraft, mecánicas, comandos o cualquier otra cuestión relacionada con DRAGONS.\n\n🐛 Reportar Bugs\nPara informar errores o problemas del servidor o del bot. Describe el problema detalladamente y proporciona pruebas cuando sea posible.\n\n⚖️ Apelación\nPara solicitar una revisión de una sanción, mute, expulsión o baneo. Explica el caso de forma honesta y proporciona la información necesaria.\n\n🤝 Hacer Alianza\nPara creadores de contenido, comunidades o servidores que quieran proponer una colaboración o alianza con DRAGONS.\n\n📌 La IA puede explicar qué categoría de ticket corresponde a cada situación, pero no puede abrir, cerrar, aprobar ni modificar tickets por sí misma.",
+                "minecraft": "",
+                "faq": ""
+            }
+        },
+        "recruitment": {
+            "enabled": true,
+            "publicChannel": "1514781342754279514",
+            "reviewChannel": "1514781342754279514",
+            "reviewerRoles": [],
+            "autoAssignRoles": {},
+            "cooldownMs": 300000,
+            "maxPerUser": 3,
+            "maxActive": 1,
+            "deleteInterviewChannels": true,
+            "useAI": true,
+            "vacancies": [
+                {
+                    "id": "moderador",
+                    "name": "Moderador",
+                    "emoji": "🛡️",
+                    "description": "Forma parte del equipo de moderación de DRAGONS y ayuda a mantener una comunidad segura, organizada y agradable para todos.",
+                    "requirements": "• Ser responsable y respetuoso.\n• Conocer las reglas de DRAGONS.\n• Tener buena comunicación.\n• Ser activo en la comunidad.\n• Saber trabajar en equipo.\n• No abusar de los permisos.\n• Tener criterio para resolver conflictos.",
+                    "functions": "• Moderar los canales.\n• Atender reportes.\n• Ayudar a los miembros.\n• Aplicar las reglas correctamente.\n• Informar problemas al equipo superior.\n• Mantener un ambiente sano dentro de la comunidad.",
+                    "active": true,
+                    "questions": [
+                        {
+                            "id": "q1",
+                            "text": "¿Cuál es tu edad y zona horaria?",
+                            "long": false,
+                            "required": true,
+                            "placeholder": "",
+                            "active": true
+                        }
+                    ],
+                    "interviewQuestions": []
+                },
+                {
+                    "id": "soporte",
+                    "name": "Soporte",
+                    "emoji": "🎫",
+                    "description": "Ayuda a los miembros de DRAGONS resolviendo dudas, problemas y solicitudes mediante el sistema de soporte.",
+                    "requirements": "• Buena comunicación.\n• Paciencia.\n• Conocimiento de la comunidad.\n• Ser respetuoso.\n• Ser activo.\n• Saber trabajar bajo presión.",
+                    "functions": "• Atender tickets.\n• Resolver dudas.\n• Ayudar a nuevos miembros.\n• Escalar problemas al staff correspondiente.\n• Mantener una atención profesional.",
+                    "active": true,
+                    "questions": [],
+                    "interviewQuestions": []
+                }
+            ],
+            "applications": [
+                {
+                    "id": 1,
+                    "userId": "1328856058566934602",
+                    "userName": "alexitozzz_gg",
+                    "vacancyId": "moderador",
+                    "vacancyName": "Moderador",
+                    "status": "reviewing",
+                    "answers": [
+                        {
+                            "questionId": "q1",
+                            "question": "¿Cuál es tu edad y zona horaria?",
+                            "answer": "hola"
+                        }
+                    ],
+                    "timestamp": 1786941526011,
+                    "history": [
+                        {
+                            "action": "Postulación enviada",
+                            "moderator": "alexitozzz_gg",
+                            "timestamp": 1786941526011
+                        },
+                        {
+                            "action": "Estado cambiado a 🔵 En revisión",
+                            "moderator": "alexitozzz_gg",
+                            "timestamp": 1786941568552
+                        }
+                    ],
+                    "interview": null,
+                    "analysis": null
+                }
+            ],
+            "nextId": 2,
+            "interviewsEnabled": true
+        },
+        "tiktok": {
+            "enabled": false,
+            "intervalMinutes": 5,
+            "mentionType": "none",
+            "mentionRoleId": null,
+            "customMessage": "🐉📱 ¡NUEVO TIKTOK DE DRAGONS!\n\n🎬 ¡Acabamos de publicar un nuevo video!\n🔥 Ve a verlo y déjanos tu apoyo ❤️\n\n🔗 {url}\n\n@",
+            "thumbnail": true,
+            "accounts": [
+                {
+                    "username": "alexitoxzz_gg",
+                    "rssFeedUrl": "https://rss.app/feeds/A7onyOmHeJsEjJCd.xml",
+                    "channelId": "1496378867038814291",
+                    "lastVideoId": "aa6b61d3f9da22eefed1c4d951759942",
+                    "addedAt": 1786947245967,
+                    "enabled": true
+                },
+                {
+                    "username": "dragons.imperium",
+                    "rssFeedUrl": "https://rss.app/feeds/eGYL3MmQTZ4AWrUt.xml",
+                    "channelId": "1496378867038814291",
+                    "lastVideoId": "cce879e2f43cbf571916c8662345fef6",
+                    "addedAt": 1786947911758,
+                    "enabled": true
+                }
+            ],
+            "history": [
+                {
+                    "username": "dragons.imperium",
+                    "videoTitle": "Unetee#minecraft #xd #realm #parati #fyp @Эdy𓅨 @Alexitoz_gg",
+                    "videoUrl": "https://www.tiktok.com/@dragons.imperium/video/7660681137274014983",
+                    "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-alisg-i-photomode-sg/d6a28e51c9f54138b367ae970f99a1d2~tplv-photomode-image.jpeg?dr=9616&x-expires=1787119200&x-signature=sOHoPly3W2kgjuRWnQ%2FJ1y%2Bsn9I%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=9b759fb9&idc=useast5&ftpl=1",
+                    "postedAt": "09 jul 2026",
+                    "notifiedAt": 1786947972470
+                },
+                {
+                    "username": "alexitoxzz_gg",
+                    "videoTitle": "Realm: EwcDb3cM9JYksPU Discord: https://discord.gg/ggM39yaeQd#minecraft #realm #xd #parati",
+                    "videoUrl": "https://www.tiktok.com/@alexitozzz_gg/video/7637622528713788690",
+                    "thumbnail": "https://p16-common-sign.tiktokcdn-us.com/tos-alisg-p-0037/oooIDfI4MQAk9zeUwvkj8fDdSAEuwCD3TQWjwF~tplv-tiktokx-origin.image?dr=9636&x-expires=1787119200&x-signature=wYJJz76spKeZTixk0ZJEqeCUwd4%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast8",
+                    "postedAt": "08 may 2026",
+                    "notifiedAt": 1786947372246
+                }
+            ],
+            "stats": {
+                "totalChecks": 4,
+                "totalNotifications": 2,
+                "errors": 0,
+                "lastCheck": 1786948353034
+            }
+        }
     }
 }
