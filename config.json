@@ -412,7 +412,7 @@
             "voiceChannel": null
         },
         "ai": {
-            "enabled": true,
+            "enabled": false,
             "channel": "1538741347220197506",
             "permissionMode": "all",
             "allowedRoles": [],
@@ -558,6 +558,84 @@
                 "totalNotifications": 2,
                 "errors": 0,
                 "lastCheck": 1786948353034
+            }
+        },
+        "aiControl": {
+            "enabled": false,
+            "intelligentDetection": true,
+            "autoResponse": true,
+            "reputationEnabled": true,
+            "advancedAntiRaid": true,
+            "incidentRegistry": true,
+            "autoRecovery": false,
+            "simulationMode": false,
+            "thresholds": {
+                "low": 30,
+                "medium": 60,
+                "high": 80,
+                "critical": 100
+            },
+            "actions": {
+                "low": [
+                    "log"
+                ],
+                "medium": [
+                    "warn",
+                    "log"
+                ],
+                "high": [
+                    "timeout",
+                    "alert",
+                    "log"
+                ],
+                "critical": [
+                    "quarantine",
+                    "alert",
+                    "log"
+                ],
+                "raid": [
+                    "lockdown",
+                    "quarantine",
+                    "alert",
+                    "log"
+                ]
+            },
+            "exemptions": {
+                "roles": [],
+                "users": [],
+                "channels": []
+            },
+            "rolePermissions": {
+                "admin": [],
+                "moderator": [],
+                "viewer": []
+            },
+            "stats": {
+                "incidentsToday": 0,
+                "incidentsWeek": 0,
+                "incidentsMonth": 0,
+                "raidsDetected": 0,
+                "spamBlocked": 0,
+                "linksBlocked": 0,
+                "mentionsBlocked": 0,
+                "quarantines": 0,
+                "autoActions": 0,
+                "restorations": 0
+            },
+            "incidents": [],
+            "incidentSeq": 0,
+            "daily": {},
+            "detection": {
+                "enabled": true,
+                "riskScores": {},
+                "recentEvents": []
+            },
+            "trustScores": {},
+            "recovery": {
+                "enabled": false,
+                "autoSnapshot": true,
+                "snapshots": [],
+                "snapshotSeq": 0
             }
         }
     }

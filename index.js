@@ -34,6 +34,7 @@ const securitySystem = require("./securitySystem");
 const userinfoSystem = require("./userinfoSystem");
 const musicSystem = require("./musicSystem");
 const aiSystem = require("./aiSystem");
+const aiControlSystem = require("./aiControlSystem");
 const recruitmentSystem = require("./recruitmentSystem");
 const tiktokSystem = require("./tiktokSystem");
 
@@ -423,6 +424,8 @@ recruitmentSystem.setupRecruitmentSystem(client, config, saveConfig);
 
 tiktokSystem.setupTiktokSystem(client, config, saveConfig);
 
+aiControlSystem.setupAIControl(client, config, saveConfig);
+
 
 client.on("guildMemberAdd", member => {
     securitySystem.handleGuildMemberAdd(member, config, saveConfig).catch(() => {});
@@ -522,6 +525,11 @@ client.on("messageCreate", async message => {
 
         if (await panelSystem.handlePanelInteraction(interaction, config, saveConfig)) {
             console.log(`[INTERACTION:OUT] handled by panelSystem in ${Date.now()-_t}ms customId=${_cid}`);
+            return;
+        }
+
+        if (aiControlSystem.handleAIControlInteraction(interaction, config, saveConfig)) {
+            console.log(`[INTERACTION:OUT] handled by aiControlSystem in ${Date.now()-_t}ms customId=${_cid}`);
             return;
         }
 

@@ -18,6 +18,7 @@ const musicSystem = require("./musicSystem");
 const aiSystem = require("./aiSystem");
 const recruitmentSystem = require("./recruitmentSystem");
 const tiktokSystem = require("./tiktokSystem");
+const aiControlSystem = require("./aiControlSystem");
 const { parseDuration } = require("./moderation");
 const { version: BOT_VERSION } = require("./package.json");
 
@@ -46,6 +47,7 @@ const SECTIONS = [
     { id: "estadisticas", emoji: "📊", label: "Estadísticas", desc: "Información general del servidor." },
     { id: "configuracion", emoji: "⚙️", label: "Configuración", desc: "Versión, estado de los sistemas y restablecimiento." },
     { id: "ai", emoji: "🤖", label: "DRAGONS AI", desc: "Inteligencia artificial conversacional. Canal, permisos, memoria y conocimiento." },
+    { id: "aiControl", emoji: "🧠", label: "AI Security", desc: "Centro de seguridad inteligente: detección, reputación, incidentes, recuperación y simulación." },
     { id: "recruitment", emoji: "📝", label: "Postulaciones", desc: "Sistema de reclutamiento: vacantes, postulaciones, entrevistas y análisis." },
     { id: "tiktok", emoji: "📱", label: "TikTok", desc: "Notificaciones automáticas de nuevos videos de TikTok." }
 ];
@@ -85,6 +87,7 @@ function ensureDefaults(gc) {
     gc.encuestas = encuestaSystem.ensureEncuestasSettings(gc.encuestas);
     aiSystem.ensureAIGC(gc);
     recruitmentSystem.ensureRecruitmentConfig(gc);
+    aiControlSystem.ensureAIControlConfig(gc);
     return gc;
 }
 
@@ -166,6 +169,7 @@ function roleMention(id) {
 }
 
 function buildMainView(guild, config) {
+    console.log(`[Panel:buildMainView] SECTIONS count=${SECTIONS.length} ids=${SECTIONS.map(s=>s.id).join(",")}`);
     const gc = ensureDefaults(getGuildConfig(config, guild.id));
     const embed = new EmbedBuilder()
         .setColor(PANEL_COLOR)
@@ -1402,6 +1406,7 @@ function buildSectionView(guild, config, section, selState) {
         case "ai": return aiSystem.aiView(gc);
         case "recruitment": return recruitmentSystem.recruitmentView(gc);
         case "tiktok": return tiktokSystem.tiktokView(gc);
+        case "aiControl": return aiControlSystem.getMainView(gc);
         default: return buildMainView(guild, config);
     }
 }
@@ -2186,5 +2191,6 @@ module.exports = {
     handlePanelInteraction,
     applyAutoRoles,
     buildMainView,
-    hasPanelPermission
+    hasPanelPermission,
+    getGuildConfig
 };
